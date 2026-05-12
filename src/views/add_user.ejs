@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    content="width=device-width, initial-scale=1.0"
+    name="viewport"
+  >
+
+  <title>
+    Add User
+  </title>
+
+  <!-- Favicon -->
+
+  <link
+    href="/assets/img/favicon.png"
+    rel="icon"
+  >
+
+  <!-- Google Fonts -->
+
+  <link
+    href="https://fonts.gstatic.com"
+    rel="preconnect"
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700"
+    rel="stylesheet"
+  >
+
+  <!-- Vendor CSS -->
+
+  <link
+    href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <link
+    href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+    rel="stylesheet"
+  >
+
+  <link
+    href="/assets/vendor/boxicons/css/boxicons.min.css"
+    rel="stylesheet"
+  >
+
+  <link
+    href="/assets/vendor/remixicon/remixicon.css"
+    rel="stylesheet"
+  >
+
+  <!-- Main CSS -->
+
+  <link
+    href="/assets/css/style.css"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    body {
+
+      background: #f4f7ff;
+
+    }
+
+    .page-title {
+
+      font-size: 30px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+    }
+
+    .add-user-card {
+
+      border: none;
+
+      border-radius: 28px;
+
+      overflow: hidden;
+
+      box-shadow: 0 8px 35px rgba(0,0,0,0.08);
+
+      background: white;
+
+    }
+
+    .card-header-custom {
+
+      background: linear-gradient(
+        135deg,
+        #012970,
+        #0d6efd
+      );
+
+      padding: 35px;
+
+      color: white;
+
+    }
+
+    .card-header-custom h2 {
+
+      font-size: 32px;
+
+      font-weight: 700;
+
+      margin-bottom: 10px;
+
+    }
+
+    .card-header-custom p {
+
+      margin: 0;
+
+      opacity: 0.9;
+
+      font-size: 15px;
+
+    }
+
+    .card-body-custom {
+
+      padding: 40px;
+
+    }
+
+    .form-label {
+
+      font-weight: 700;
+
+      color: #012970;
+
+      margin-bottom: 10px;
+
+    }
+
+    .form-control,
+    .form-select {
+
+      height: 55px;
+
+      border-radius: 16px;
+
+      border: 1px solid #dbe2ef;
+
+      padding: 0 18px;
+
+      font-size: 15px;
+
+      box-shadow: none;
+
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+
+      border-color: #0d6efd;
+
+      box-shadow: 0 0 0 4px rgba(13,110,253,0.08);
+
+    }
+
+    textarea.form-control {
+
+      height: auto;
+
+      padding-top: 14px;
+
+    }
+
+    .input-icon {
+
+      position: relative;
+
+    }
+
+    .input-icon i {
+
+      position: absolute;
+
+      top: 18px;
+
+      right: 18px;
+
+      color: #6c757d;
+
+      font-size: 18px;
+
+    }
+
+    .submit-btn {
+
+      height: 55px;
+
+      border: none;
+
+      border-radius: 16px;
+
+      background: linear-gradient(
+        135deg,
+        #012970,
+        #0d6efd
+      );
+
+      color: white;
+
+      font-size: 16px;
+
+      font-weight: 700;
+
+      padding: 0 35px;
+
+      transition: 0.3s;
+
+    }
+
+    .submit-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 10px 20px rgba(13,110,253,0.2);
+
+    }
+
+    .reset-btn {
+
+      height: 55px;
+
+      border-radius: 16px;
+
+      font-size: 16px;
+
+      font-weight: 700;
+
+      padding: 0 35px;
+
+    }
+
+    .section-title {
+
+      font-size: 18px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+      margin-bottom: 25px;
+
+      border-left: 4px solid #0d6efd;
+
+      padding-left: 14px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <%- include("../../utils/header") %>
+
+  <!-- SIDEBAR -->
+
+  <%- include("../../utils/side") %>
+
+  <!-- MAIN -->
+
+  <main
+    id="main"
+    class="main"
+  >
+
+    <!-- PAGE TITLE -->
+
+    <div class="pagetitle mb-4">
+
+      <%- include("../../utils/flash") %>
+
+      <h1 class="page-title">
+        Add New User
+      </h1>
+
+      <nav>
+
+        <ol class="breadcrumb">
+
+          <li class="breadcrumb-item">
+            <a href="/user_dashboard">
+              Home
+            </a>
+          </li>
+
+          <li class="breadcrumb-item">
+            User Manager
+          </li>
+
+          <li class="breadcrumb-item active">
+            Add User
+          </li>
+
+        </ol>
+
+      </nav>
+
+    </div>
+
+    <!-- ADD USER SECTION -->
+
+    <section class="section">
+
+      <div class="card add-user-card">
+
+        <!-- CARD HEADER -->
+
+        <div class="card-header-custom">
+
+          <h2>
+            Create User Account
+          </h2>
+
+          <p>
+            Fill all details carefully to create a new user account.
+          </p>
+
+        </div>
+
+        <!-- CARD BODY -->
+
+        <div class="card-body-custom">
+
+          <form
+            class="row g-4"
+            action="/add_user_post"
+            method="POST"
+          >
+
+            <!-- BASIC INFO -->
+
+            <div class="col-12">
+
+              <h5 class="section-title">
+                Basic Information
+              </h5>
+
+            </div>
+
+            <!-- FULL NAME -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Full Name
+              </label>
+
+              <div class="input-icon">
+
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  placeholder="Enter full name"
+                  required
+                >
+
+                <i class="bi bi-person"></i>
+
+              </div>
+
+            </div>
+
+            <!-- MOBILE -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Mobile Number
+              </label>
+
+              <div class="input-icon">
+
+                <input
+                  type="text"
+                  class="form-control"
+                  name="mobile"
+                  placeholder="Enter mobile number"
+                  required
+                >
+
+                <i class="bi bi-phone"></i>
+
+              </div>
+
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Email Address
+              </label>
+
+              <div class="input-icon">
+
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  placeholder="Enter email address"
+                  required
+                >
+
+                <i class="bi bi-envelope"></i>
+
+              </div>
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Password
+              </label>
+
+              <div class="input-icon">
+
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  placeholder="Enter password"
+                  required
+                >
+
+                <i class="bi bi-lock"></i>
+
+              </div>
+
+            </div>
+
+            <!-- PERSONAL INFO -->
+
+            <div class="col-12 mt-4">
+
+              <h5 class="section-title">
+                Personal Information
+              </h5>
+
+            </div>
+
+            <!-- DOB -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Date of Birth
+              </label>
+
+              <input
+                type="date"
+                class="form-control"
+                name="dob"
+                required
+              >
+
+            </div>
+
+            <!-- GENDER -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Gender
+              </label>
+
+              <select
+                class="form-select"
+                name="gender"
+                required
+              >
+
+                <option value="">
+                  Select Gender
+                </option>
+
+                <option value="Male">
+                  Male
+                </option>
+
+                <option value="Female">
+                  Female
+                </option>
+
+              </select>
+
+            </div>
+
+            <!-- ADDRESS -->
+
+            <div class="col-md-12">
+
+              <label class="form-label">
+                Address
+              </label>
+
+              <textarea
+                class="form-control"
+                name="address"
+                rows="4"
+                placeholder="Enter address"
+                required
+              ></textarea>
+
+            </div>
+
+            <!-- CITY -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                City
+              </label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="city"
+                placeholder="Enter city"
+                required
+              >
+
+            </div>
+
+            <!-- STATE -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                State
+              </label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="state"
+                placeholder="Enter state"
+                required
+              >
+
+            </div>
+
+            <!-- ACCOUNT INFO -->
+
+            <div class="col-12 mt-4">
+
+              <h5 class="section-title">
+                Account Information
+              </h5>
+
+            </div>
+
+            <!-- AMOUNT -->
+
+            <div class="col-md-12">
+
+              <label class="form-label">
+                Joining Amount
+              </label>
+
+              <div class="input-icon">
+
+                <input
+                  type="number"
+                  class="form-control"
+                  name="amount"
+                  placeholder="Enter amount"
+                  required
+                >
+
+                <i class="bi bi-currency-rupee"></i>
+
+              </div>
+
+            </div>
+
+            <!-- BUTTONS -->
+
+            <div class="col-12 mt-4 text-center">
+
+              <button
+                type="submit"
+                class="submit-btn"
+              >
+
+                <i class="bi bi-person-plus-fill me-2"></i>
+
+                Create User
+
+              </button>
+
+              <button
+                type="reset"
+                class="btn btn-secondary reset-btn ms-3"
+              >
+
+                Reset
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <%- include("../../utils/footer") %>
+
+  <!-- BACK TO TOP -->
+
+  <a
+    href="#"
+    class="back-to-top d-flex align-items-center justify-content-center"
+  >
+
+    <i class="bi bi-arrow-up-short"></i>
+
+  </a>
+
+  <!-- JS -->
+
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>

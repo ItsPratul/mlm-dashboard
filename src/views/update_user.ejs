@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    content="width=device-width, initial-scale=1.0"
+    name="viewport"
+  >
+
+  <title>
+    Update User
+  </title>
+
+  <!-- Favicons -->
+
+  <link
+    href="/assets/img/favicon.png"
+    rel="icon"
+  >
+
+  <!-- Google Fonts -->
+
+  <link
+    href="https://fonts.gstatic.com"
+    rel="preconnect"
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700"
+    rel="stylesheet"
+  >
+
+  <!-- Vendor CSS -->
+
+  <link
+    href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <link
+    href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+    rel="stylesheet"
+  >
+
+  <link
+    href="/assets/vendor/boxicons/css/boxicons.min.css"
+    rel="stylesheet"
+  >
+
+  <link
+    href="/assets/vendor/remixicon/remixicon.css"
+    rel="stylesheet"
+  >
+
+  <!-- Main CSS -->
+
+  <link
+    href="/assets/css/style.css"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    body {
+
+      background: #f4f7ff;
+
+    }
+
+    .page-title {
+
+      font-size: 30px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+    }
+
+    .update-card {
+
+      border: none;
+
+      border-radius: 28px;
+
+      overflow: hidden;
+
+      box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+
+      background: white;
+
+    }
+
+    .update-header {
+
+      background: linear-gradient(
+        135deg,
+        #012970,
+        #0d6efd
+      );
+
+      padding: 40px;
+
+      color: white;
+
+      position: relative;
+
+    }
+
+    .update-header h2 {
+
+      font-size: 34px;
+
+      font-weight: 700;
+
+      margin-bottom: 10px;
+
+    }
+
+    .update-header p {
+
+      margin: 0;
+
+      opacity: 0.9;
+
+      font-size: 15px;
+
+    }
+
+    .header-icon {
+
+      position: absolute;
+
+      right: 35px;
+
+      top: 25px;
+
+      font-size: 70px;
+
+      opacity: 0.15;
+
+    }
+
+    .update-body {
+
+      padding: 45px;
+
+    }
+
+    .profile-section {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 25px;
+
+      margin-bottom: 40px;
+
+      padding-bottom: 30px;
+
+      border-bottom: 1px solid #eee;
+
+    }
+
+    .profile-image {
+
+      width: 120px;
+
+      height: 120px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      border: 5px solid #e8ecff;
+
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+
+    }
+
+    .profile-name {
+
+      font-size: 28px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+      margin-bottom: 8px;
+
+    }
+
+    .profile-id {
+
+      display: inline-block;
+
+      background: #eef3ff;
+
+      color: #012970;
+
+      padding: 8px 18px;
+
+      border-radius: 30px;
+
+      font-weight: 700;
+
+      font-size: 14px;
+
+    }
+
+    .form-label {
+
+      font-weight: 700;
+
+      color: #012970;
+
+      margin-bottom: 10px;
+
+    }
+
+    .form-control,
+    .form-select {
+
+      height: 55px;
+
+      border-radius: 16px;
+
+      border: 1px solid #dbe2ef;
+
+      padding: 0 18px;
+
+      font-size: 15px;
+
+      box-shadow: none;
+
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+
+      border-color: #0d6efd;
+
+      box-shadow: 0 0 0 4px rgba(13,110,253,0.08);
+
+    }
+
+    textarea.form-control {
+
+      height: auto;
+
+      padding-top: 14px;
+
+    }
+
+    .input-icon {
+
+      position: relative;
+
+    }
+
+    .input-icon i {
+
+      position: absolute;
+
+      top: 18px;
+
+      right: 18px;
+
+      color: #6c757d;
+
+      font-size: 18px;
+
+    }
+
+    .section-title {
+
+      font-size: 18px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+      margin-bottom: 25px;
+
+      border-left: 4px solid #0d6efd;
+
+      padding-left: 14px;
+
+    }
+
+    .update-btn {
+
+      height: 58px;
+
+      border: none;
+
+      border-radius: 18px;
+
+      background: linear-gradient(
+        135deg,
+        #012970,
+        #0d6efd
+      );
+
+      color: white;
+
+      font-size: 17px;
+
+      font-weight: 700;
+
+      padding: 0 40px;
+
+      transition: 0.3s;
+
+    }
+
+    .update-btn:hover {
+
+      transform: translateY(-2px);
+
+      box-shadow: 0 10px 20px rgba(13,110,253,0.2);
+
+    }
+
+    .reset-btn {
+
+      height: 58px;
+
+      border-radius: 18px;
+
+      font-size: 17px;
+
+      font-weight: 700;
+
+      padding: 0 40px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <%- include("../../utils/header") %>
+
+  <!-- SIDEBAR -->
+
+  <%- include("../../utils/side") %>
+
+  <!-- MAIN -->
+
+  <main
+    id="main"
+    class="main"
+  >
+
+    <!-- PAGE TITLE -->
+
+    <div class="pagetitle mb-4">
+
+      <%- include("../../utils/flash") %>
+
+      <h1 class="page-title">
+        Update User
+      </h1>
+
+      <nav>
+
+        <ol class="breadcrumb">
+
+          <li class="breadcrumb-item">
+            <a href="/user_dashboard">
+              Home
+            </a>
+          </li>
+
+          <li class="breadcrumb-item">
+            User Manager
+          </li>
+
+          <li class="breadcrumb-item active">
+            Update User
+          </li>
+
+        </ol>
+
+      </nav>
+
+    </div>
+
+    <!-- UPDATE SECTION -->
+
+    <section class="section">
+
+      <div class="card update-card">
+
+        <!-- HEADER -->
+
+        <div class="update-header">
+
+          <i class="bi bi-person-gear header-icon"></i>
+
+          <h2>
+            Update User Profile
+          </h2>
+
+          <p>
+            Manage and update user details professionally.
+          </p>
+
+        </div>
+
+        <!-- BODY -->
+
+        <div class="update-body">
+
+          <!-- PROFILE SECTION -->
+
+          <div class="profile-section">
+
+            <img
+              src="<%= user_data.profile_photo || '/assets/img/profile-img.jpg' %>"
+              alt="Profile"
+              class="profile-image"
+            >
+
+            <div>
+
+              <div class="profile-name">
+                <%= user_data.name %>
+              </div>
+
+              <div class="profile-id">
+                User ID :
+                <%= user_data.user_id %>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- FORM -->
+
+          <form
+            class="row g-4"
+            action="/update_user_post"
+            method="POST"
+          >
+
+            <input
+              type="hidden"
+              name="user_id"
+              value="<%= user_data.user_id %>"
+            >
+
+            <!-- BASIC INFO -->
+
+            <div class="col-12">
+
+              <h5 class="section-title">
+                Basic Information
+              </h5>
+
+            </div>
+
+            <!-- FULL NAME -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Full Name
+              </label>
+
+              <div class="input-icon">
+
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  value="<%= user_data.name %>"
+                >
+
+                <i class="bi bi-person"></i>
+
+              </div>
+
+            </div>
+
+            <!-- MOBILE -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Mobile Number
+              </label>
+
+              <div class="input-icon">
+
+                <input
+                  type="text"
+                  class="form-control"
+                  name="mobile"
+                  value="<%= user_data.mobile %>"
+                >
+
+                <i class="bi bi-phone"></i>
+
+              </div>
+
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Email Address
+              </label>
+
+              <div class="input-icon">
+
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  value="<%= user_data.email %>"
+                >
+
+                <i class="bi bi-envelope"></i>
+
+              </div>
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                New Password
+              </label>
+
+              <div class="input-icon">
+
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  placeholder="Leave blank to keep old password"
+                >
+
+                <i class="bi bi-lock"></i>
+
+              </div>
+
+            </div>
+
+            <!-- PERSONAL INFO -->
+
+            <div class="col-12 mt-4">
+
+              <h5 class="section-title">
+                Personal Information
+              </h5>
+
+            </div>
+
+            <!-- GENDER -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Gender
+              </label>
+
+              <select
+                class="form-select"
+                name="gender"
+              >
+
+                <option value="">
+                  Select Gender
+                </option>
+
+                <option
+                  value="Male"
+                  <%= user_data.gender == 'Male' ? 'selected' : '' %>
+                >
+                  Male
+                </option>
+
+                <option
+                  value="Female"
+                  <%= user_data.gender == 'Female' ? 'selected' : '' %>
+                >
+                  Female
+                </option>
+
+              </select>
+
+            </div>
+
+            <!-- CITY -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                City
+              </label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="city"
+                value="<%= user_data.city %>"
+              >
+
+            </div>
+
+            <!-- STATE -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                State
+              </label>
+
+              <input
+                type="text"
+                class="form-control"
+                name="state"
+                value="<%= user_data.state %>"
+              >
+
+            </div>
+
+            <!-- ADDRESS -->
+
+            <div class="col-md-6">
+
+              <label class="form-label">
+                Address
+              </label>
+
+              <textarea
+                class="form-control"
+                name="address"
+                rows="4"
+              ><%= user_data.address %></textarea>
+
+            </div>
+
+            <!-- BUTTONS -->
+
+            <div class="col-12 mt-4 text-center">
+
+              <button
+                type="submit"
+                class="update-btn"
+              >
+
+                <i class="bi bi-check-circle-fill me-2"></i>
+
+                Update User
+
+              </button>
+
+              <button
+                type="reset"
+                class="btn btn-secondary reset-btn ms-3"
+              >
+
+                Reset
+
+              </button>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <%- include("../../utils/footer") %>
+
+  <!-- BACK TO TOP -->
+
+  <a
+    href="#"
+    class="back-to-top d-flex align-items-center justify-content-center"
+  >
+
+    <i class="bi bi-arrow-up-short"></i>
+
+  </a>
+
+  <!-- JS -->
+
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,538 @@
+<!-- ======= SIDEBAR ======= -->
+
+<aside
+  id="sidebar"
+  class="sidebar"
+>
+
+  <!-- LOGO -->
+
+  <div class="sidebar-top">
+
+    <div class="logo-box">
+
+      <i class="bi bi-grid-fill"></i>
+
+    </div>
+
+    <h4>
+      MLM Admin
+    </h4>
+
+    <p>
+      Dashboard Panel
+    </p>
+
+  </div>
+
+  <!-- NAVIGATION -->
+
+  <ul
+    class="sidebar-nav"
+    id="sidebar-nav"
+  >
+
+    <!-- DASHBOARD -->
+
+    <li class="nav-item">
+
+      <a
+        class="nav-link"
+        href="/user_dashboard"
+      >
+
+        <i class="bi bi-grid-fill"></i>
+
+        <span>
+          Dashboard
+        </span>
+
+      </a>
+
+    </li>
+
+    <!-- USER MANAGER -->
+
+    <li class="nav-item">
+
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#user-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+
+        <i class="bi bi-people-fill"></i>
+
+        <span>
+          User Manager
+        </span>
+
+        <i class="bi bi-chevron-down ms-auto"></i>
+
+      </a>
+
+      <ul
+        id="user-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+
+        <li>
+
+          <a href="/view_users">
+
+            <i class="bi bi-circle-fill"></i>
+
+            <span>
+              View Users
+            </span>
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a href="/add_user">
+
+            <i class="bi bi-circle-fill"></i>
+
+            <span>
+              Add User
+            </span>
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a href="/user_tree_viewer">
+
+            <i class="bi bi-circle-fill"></i>
+
+            <span>
+              User Tree Viewer
+            </span>
+
+          </a>
+
+        </li>
+
+      </ul>
+
+    </li>
+
+    <!-- TRANSACTIONS -->
+
+    <li class="nav-item">
+
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#transaction-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+
+        <i class="bi bi-arrow-left-right"></i>
+
+        <span>
+          Transactions
+        </span>
+
+        <i class="bi bi-chevron-down ms-auto"></i>
+
+      </a>
+
+      <ul
+        id="transaction-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+
+        <li>
+
+          <a href="/view_transactions">
+
+            <i class="bi bi-circle-fill"></i>
+
+            <span>
+              View Transactions
+            </span>
+
+          </a>
+
+        </li>
+
+      </ul>
+
+    </li>
+
+    <!-- WALLET -->
+
+    <li class="nav-item">
+
+      <a
+        class="nav-link collapsed"
+        data-bs-target="#wallet-nav"
+        data-bs-toggle="collapse"
+        href="#"
+      >
+
+        <i class="bi bi-wallet2"></i>
+
+        <span>
+          Wallet Manager
+        </span>
+
+        <i class="bi bi-chevron-down ms-auto"></i>
+
+      </a>
+
+      <ul
+        id="wallet-nav"
+        class="nav-content collapse"
+        data-bs-parent="#sidebar-nav"
+      >
+
+        <li>
+
+          <a href="/add_balance">
+
+            <i class="bi bi-circle-fill"></i>
+
+            <span>
+              Add Balance
+            </span>
+
+          </a>
+
+        </li>
+
+        <li>
+
+          <a href="/withdraw_balance">
+
+            <i class="bi bi-circle-fill"></i>
+
+            <span>
+              Withdraw Balance
+            </span>
+
+          </a>
+
+        </li>
+
+      </ul>
+
+    </li>
+
+    <!-- PRODUCTS -->
+
+    <% if(admin_data.parent_id === null){ %>
+
+      <li class="nav-item">
+
+        <a
+          class="nav-link collapsed"
+          data-bs-target="#product-nav"
+          data-bs-toggle="collapse"
+          href="#"
+        >
+
+          <i class="bi bi-box-seam"></i>
+
+          <span>
+            Products
+          </span>
+
+          <i class="bi bi-chevron-down ms-auto"></i>
+
+        </a>
+
+        <ul
+          id="product-nav"
+          class="nav-content collapse"
+          data-bs-parent="#sidebar-nav"
+        >
+
+          <li>
+
+            <a href="/add_product">
+
+              <i class="bi bi-circle-fill"></i>
+
+              <span>
+                Add Product
+              </span>
+
+            </a>
+
+          </li>
+
+          <li>
+
+            <a href="/view_products">
+
+              <i class="bi bi-circle-fill"></i>
+
+              <span>
+                View Products
+              </span>
+
+            </a>
+
+          </li>
+
+        </ul>
+
+      </li>
+
+    <% } %>
+
+    <!-- PROFILE -->
+
+    <li class="nav-item">
+
+      <a
+        class="nav-link collapsed"
+        href="/admin_profile"
+      >
+
+        <i class="bi bi-person-circle"></i>
+
+        <span>
+          My Profile
+        </span>
+
+      </a>
+
+    </li>
+
+  </ul>
+
+</aside>
+
+<!-- ======= SIDEBAR CSS ======= -->
+
+<style>
+
+  .sidebar {
+
+  background: linear-gradient(
+    180deg,
+    #012970 0%,
+    #013a8a 45%,
+    #0353c4 100%
+  );
+
+  padding: 18px 14px;
+
+  border-right: none;
+
+  box-shadow: 4px 0 24px rgba(1,41,112,0.18);
+
+}
+
+/* ================= TOP ================= */
+
+.sidebar-top {
+
+  text-align: center;
+
+  padding-bottom: 24px;
+
+  margin-bottom: 22px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+
+}
+
+.logo-box {
+
+  width: 64px;
+
+  height: 64px;
+
+  border-radius: 20px;
+
+  background: rgba(255,255,255,0.12);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 0 auto 14px;
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+
+}
+
+.logo-box i {
+
+  color: white;
+
+  font-size: 28px;
+
+}
+
+.sidebar-top h4 {
+
+  margin: 0;
+
+  font-size: 24px;
+
+  font-weight: 700;
+
+  color: white;
+
+}
+
+.sidebar-top p {
+
+  margin: 5px 0 0;
+
+  font-size: 13px;
+
+  color: rgba(255,255,255,0.72);
+
+}
+
+/* ================= NAVIGATION ================= */
+
+.sidebar-nav {
+
+  padding: 0;
+
+  margin: 0;
+
+  list-style: none;
+
+}
+
+.sidebar-nav .nav-item {
+
+  margin-bottom: 10px;
+
+}
+
+.sidebar-nav .nav-link {
+
+  height: 52px;
+
+  border-radius: 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 0 16px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: rgba(255,255,255,0.85);
+
+  background: transparent;
+
+  transition: 0.3s;
+
+}
+
+.sidebar-nav .nav-link i {
+
+  font-size: 18px;
+
+}
+
+.sidebar-nav .nav-link:hover {
+
+  background: rgba(255,255,255,0.1);
+
+  color: white;
+
+  transform: translateX(3px);
+
+}
+
+.sidebar-nav .nav-link:not(.collapsed) {
+
+  background: rgba(255,255,255,0.16);
+
+  color: white;
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+
+}
+
+.sidebar-nav .nav-link:not(.collapsed) i {
+
+  color: white;
+
+}
+
+/* ================= SUBMENU ================= */
+
+.nav-content {
+
+  padding-left: 18px;
+
+  margin-top: 6px;
+
+}
+
+.nav-content li {
+
+  list-style: none;
+
+}
+
+.nav-content a {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 11px 14px;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  color: rgba(255,255,255,0.72);
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  transition: 0.3s;
+
+}
+
+.nav-content a:hover {
+
+  background: rgba(255,255,255,0.08);
+
+  color: white;
+
+}
+
+.nav-content i {
+
+  font-size: 6px !important;
+
+}
+
+</style>

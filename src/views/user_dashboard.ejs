@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta
+    content="width=device-width, initial-scale=1.0"
+    name="viewport"
+  />
+
+  <title>
+    Dashboard
+  </title>
+
+  <!-- Vendor CSS -->
+
+  <link
+    href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link
+    href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+
+  <link
+    href="/assets/css/style.css"
+    rel="stylesheet"
+  />
+
+  <!-- Google Font -->
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    body {
+
+      background: #f4f7ff;
+
+      font-family: 'Poppins', sans-serif;
+
+    }
+
+    /* ================= PAGE TITLE ================= */
+
+    .page-title {
+
+      margin-bottom: 22px;
+
+    }
+
+    .page-title h1 {
+
+      font-size: 28px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+      margin-bottom: 4px;
+
+    }
+
+    /* ================= WELCOME CARD ================= */
+
+    .welcome-card {
+
+      background: linear-gradient(
+        135deg,
+        #012970,
+        #0d6efd
+      );
+
+      border-radius: 24px;
+
+      padding: 28px;
+
+      color: white;
+
+      position: relative;
+
+      overflow: hidden;
+
+      margin-bottom: 24px;
+
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+
+    }
+
+    .welcome-card::before {
+
+      content: "";
+
+      position: absolute;
+
+      width: 220px;
+
+      height: 220px;
+
+      background: rgba(255,255,255,0.07);
+
+      border-radius: 50%;
+
+      top: -80px;
+
+      right: -70px;
+
+    }
+
+    .welcome-card h2 {
+
+      font-size: 28px;
+
+      font-weight: 700;
+
+      margin-bottom: 8px;
+
+      position: relative;
+
+      z-index: 1;
+
+    }
+
+    .welcome-card p {
+
+      font-size: 14px;
+
+      opacity: 0.9;
+
+      position: relative;
+
+      z-index: 1;
+
+    }
+
+    .profile-box {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 16px;
+
+      margin-top: 20px;
+
+      position: relative;
+
+      z-index: 1;
+
+    }
+
+    .profile-image {
+
+      width: 72px;
+
+      height: 72px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      border: 3px solid rgba(255,255,255,0.25);
+
+    }
+
+    .profile-box h5 {
+
+      font-size: 18px;
+
+      font-weight: 700;
+
+      margin-bottom: 4px;
+
+    }
+
+    .profile-box span {
+
+      font-size: 13px;
+
+      opacity: 0.9;
+
+    }
+
+    /* ================= INFO CARDS ================= */
+
+    .info-card {
+
+      border: none;
+
+      border-radius: 20px;
+
+      padding: 22px;
+
+      background: white;
+
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+
+      transition: 0.3s;
+
+      height: 100%;
+
+    }
+
+    .info-card:hover {
+
+      transform: translateY(-3px);
+
+    }
+
+    .info-icon {
+
+      width: 52px;
+
+      height: 52px;
+
+      border-radius: 14px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 22px;
+
+      margin-bottom: 16px;
+
+      color: white;
+
+    }
+
+    .bg-blue {
+
+      background: linear-gradient(
+        135deg,
+        #012970,
+        #0d6efd
+      );
+
+    }
+
+    .bg-green {
+
+      background: linear-gradient(
+        135deg,
+        #198754,
+        #20c997
+      );
+
+    }
+
+    .bg-orange {
+
+      background: linear-gradient(
+        135deg,
+        #ff8800,
+        #ffb347
+      );
+
+    }
+
+    .bg-purple {
+
+      background: linear-gradient(
+        135deg,
+        #6f42c1,
+        #9b6dff
+      );
+
+    }
+
+    .info-card h6 {
+
+      color: #6c757d;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      margin-bottom: 8px;
+
+    }
+
+    .info-card h3 {
+
+      font-size: 24px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+      margin-bottom: 0;
+
+    }
+
+    /* ================= QUICK ACTION CARD ================= */
+
+    .quick-card {
+
+      border: none;
+
+      border-radius: 20px;
+
+      background: white;
+
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+
+      padding: 24px;
+
+      height: 100%;
+
+    }
+
+    .section-title {
+
+      font-size: 18px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+      margin-bottom: 20px;
+
+    }
+
+    /* ================= ACTION BUTTONS ================= */
+
+    .action-btn {
+
+      height: 50px;
+
+      border-radius: 14px;
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 8px;
+
+      margin-bottom: 14px;
+
+      transition: 0.3s;
+
+      text-decoration: none;
+
+      color: white;
+
+    }
+
+    .action-btn:hover {
+
+      transform: translateY(-2px);
+
+      color: white;
+
+    }
+
+    .btn-blue {
+
+      background: linear-gradient(
+        135deg,
+        #012970,
+        #0d6efd
+      );
+
+    }
+
+    .btn-green {
+
+      background: linear-gradient(
+        135deg,
+        #198754,
+        #20c997
+      );
+
+    }
+
+    .btn-red {
+
+      background: linear-gradient(
+        135deg,
+        #dc3545,
+        #ff6b6b
+      );
+
+    }
+
+    /* ================= ACTIVITY CARD ================= */
+
+    .activity-card {
+
+      border: none;
+
+      border-radius: 20px;
+
+      background: white;
+
+      padding: 26px;
+
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+
+    }
+
+    .activity-item {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 14px 0;
+
+      border-bottom: 1px solid #eee;
+
+    }
+
+    .activity-item:last-child {
+
+      border-bottom: none;
+
+    }
+
+    .activity-icon {
+
+      width: 42px;
+
+      height: 42px;
+
+      border-radius: 12px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 18px;
+
+      color: white;
+
+    }
+
+    .activity-text h6 {
+
+      margin-bottom: 3px;
+
+      font-size: 15px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+    }
+
+    .activity-text p {
+
+      margin: 0;
+
+      color: #6c757d;
+
+      font-size: 13px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <%- include("../../utils/header") %>
+
+  <!-- SIDEBAR -->
+
+  <%- include("../../utils/side") %>
+
+  <!-- MAIN -->
+
+  <main
+    id="main"
+    class="main"
+  >
+
+    <!-- FLASH -->
+
+    <%- include("../../utils/flash") %>
+
+    <!-- PAGE TITLE -->
+
+    <div class="page-title">
+
+      <h1>
+        Dashboard
+      </h1>
+
+    </div>
+
+    <!-- WELCOME CARD -->
+
+    <div class="welcome-card">
+
+      <h2>
+        Welcome Back,
+        <%= admin_data?.name %> 👋
+      </h2>
+
+      <p>
+        Your MLM dashboard is active and running smoothly.
+      </p>
+
+      <div class="profile-box">
+
+        <img
+          src="<%= admin_data?.profile_photo || '/assets/img/profile-img.jpg' %>"
+          alt="Profile"
+          class="profile-image"
+        >
+
+        <div>
+
+          <h5>
+            <%= admin_data?.name %>
+          </h5>
+
+          <span>
+            User ID :
+            #<%= admin_data?.user_id %>
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- DASHBOARD -->
+
+    <section class="section dashboard">
+
+      <!-- INFO CARDS -->
+
+      <div class="row g-4">
+
+        <!-- USER ID -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div class="info-card">
+
+            <div class="info-icon bg-blue">
+
+              <i class="bi bi-person-badge"></i>
+
+            </div>
+
+            <h6>
+              User ID
+            </h6>
+
+            <h3>
+              #<%= admin_data?.user_id %>
+            </h3>
+
+          </div>
+
+        </div>
+
+        <!-- WALLET -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div class="info-card">
+
+            <div class="info-icon bg-green">
+
+              <i class="bi bi-wallet2"></i>
+
+            </div>
+
+            <h6>
+              Wallet Balance
+            </h6>
+
+            <h3>
+              ₹ <%= admin_data?.wallet %>
+            </h3>
+
+          </div>
+
+        </div>
+
+        <!-- PARENT ID -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div class="info-card">
+
+            <div class="info-icon bg-orange">
+
+              <i class="bi bi-diagram-3"></i>
+
+            </div>
+
+            <h6>
+              Parent ID
+            </h6>
+
+            <h3>
+              <%= admin_data?.parent_id || 'ROOT' %>
+            </h3>
+
+          </div>
+
+        </div>
+
+        <!-- POSITION -->
+
+        <div class="col-lg-3 col-md-6">
+
+          <div class="info-card">
+
+            <div class="info-icon bg-purple">
+
+              <i class="bi bi-trophy"></i>
+
+            </div>
+
+            <h6>
+              Position
+            </h6>
+
+            <h3>
+              <%= admin_data?.position || '1' %>
+            </h3>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- QUICK ACTIONS -->
+
+      <div class="row mt-4">
+
+        <!-- ACTIONS -->
+
+        <div class="col-lg-4">
+
+          <div class="quick-card">
+
+            <h4 class="section-title">
+              Quick Actions
+            </h4>
+
+            <a
+              href="/add_user"
+              class="action-btn btn-blue"
+            >
+
+              <i class="bi bi-person-plus-fill"></i>
+
+              Add User
+
+            </a>
+
+            <a
+              href="/wallet"
+              class="action-btn btn-green"
+            >
+
+              <i class="bi bi-wallet-fill"></i>
+
+              Wallet
+
+            </a>
+
+            <a
+              href="/logout"
+              class="action-btn btn-red"
+            >
+
+              <i class="bi bi-box-arrow-right"></i>
+
+              Logout
+
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- ACTIVITY -->
+
+        <div class="col-lg-8">
+
+          <div class="activity-card">
+
+            <h4 class="section-title">
+              Recent Activity
+            </h4>
+
+            <div class="activity-item">
+
+              <div class="activity-icon bg-blue">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+              </div>
+
+              <div class="activity-text">
+
+                <h6>
+                  Account Active
+                </h6>
+
+                <p>
+                  Your account is verified and active.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="activity-item">
+
+              <div class="activity-icon bg-green">
+
+                <i class="bi bi-wallet-fill"></i>
+
+              </div>
+
+              <div class="activity-text">
+
+                <h6>
+                  Wallet Ready
+                </h6>
+
+                <p>
+                  Add or withdraw balance anytime.
+                </p>
+
+              </div>
+
+            </div>
+
+            <div class="activity-item">
+
+              <div class="activity-icon bg-orange">
+
+                <i class="bi bi-people-fill"></i>
+
+              </div>
+
+              <div class="activity-text">
+
+                <h6>
+                  MLM Network Active
+                </h6>
+
+                <p>
+                  Your referral structure is functioning properly.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <%- include("../../utils/footer") %>
+
+  <!-- JS -->
+
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

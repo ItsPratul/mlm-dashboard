@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Coming Soon</title>
+
+    <!-- Bootstrap -->
+
+    <link
+      href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+
+    <link
+      href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Font -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+
+        min-height: 100vh;
+
+        position: relative;
+
+        background: #000;
+
+        overflow: hidden;
+      }
+
+      /* ================= BACKGROUND ================= */
+
+      .background {
+        position: absolute;
+
+        inset: 0;
+
+        background-image:
+          linear-gradient(rgba(0, 0, 0, 0.78), rgba(17, 24, 39, 0.88)),
+          url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2070&auto=format&fit=crop");
+
+        background-size: cover;
+
+        background-position: center;
+
+        transform: scale(1.05);
+      }
+
+      /* ================= CONTAINER ================= */
+
+      .coming-container {
+        position: relative;
+
+        z-index: 2;
+
+        min-height: 100vh;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 24px;
+      }
+
+      /* ================= CARD ================= */
+
+      .coming-card {
+        width: 100%;
+
+        max-width: 880px;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        border: 1px solid rgba(255, 255, 255, 0.08);
+
+        backdrop-filter: blur(14px);
+
+        border-radius: 24px;
+
+        padding: 28px 32px;
+
+        text-align: center;
+
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+      }
+
+      /* ================= ICON ================= */
+
+      .icon-box {
+        width: 76px;
+
+        height: 76px;
+
+        border-radius: 20px;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        margin: 0 auto 18px;
+      }
+
+      .icon-box i {
+        font-size: 34px;
+
+        color: white;
+      }
+
+      /* ================= BADGE ================= */
+
+      .coming-badge {
+        display: inline-block;
+
+        padding: 8px 16px;
+
+        border-radius: 40px;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        color: rgba(255, 255, 255, 0.9);
+
+        font-size: 11px;
+
+        font-weight: 600;
+
+        margin-bottom: 18px;
+
+        letter-spacing: 1px;
+
+        text-transform: uppercase;
+      }
+
+      /* ================= TITLE ================= */
+
+      .coming-card h1 {
+        font-size: 34px;
+
+        font-weight: 800;
+
+        color: white;
+
+        margin-bottom: 12px;
+
+        line-height: 1.3;
+      }
+
+      /* ================= DESCRIPTION ================= */
+
+      .coming-card p {
+        color: rgba(255, 255, 255, 0.78);
+
+        font-size: 14px;
+
+        line-height: 1.7;
+
+        margin-bottom: 22px;
+
+        max-width: 680px;
+
+        margin-left: auto;
+
+        margin-right: auto;
+      }
+
+      /* ================= FEATURE BOXES ================= */
+
+      .feature-boxes {
+        display: grid;
+
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 14px;
+
+        margin-bottom: 24px;
+      }
+
+      .feature-box {
+        background: rgba(255, 255, 255, 0.06);
+
+        border-radius: 16px;
+
+        padding: 16px 12px;
+
+        min-height: 110px;
+
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .feature-box i {
+        font-size: 22px;
+
+        color: white;
+
+        margin-bottom: 10px;
+      }
+
+      .feature-box h5 {
+        color: white;
+
+        font-size: 14px;
+
+        font-weight: 700;
+
+        margin-bottom: 5px;
+      }
+
+      .feature-box span {
+        color: rgba(255, 255, 255, 0.68);
+
+        font-size: 12px;
+
+        line-height: 1.6;
+      }
+
+      /* ================= BUTTON ================= */
+
+      .btn-home {
+        height: 46px;
+
+        padding: 0 24px;
+
+        border-radius: 14px;
+
+        background: white;
+
+        color: #111827;
+
+        font-size: 14px;
+
+        font-weight: 700;
+
+        text-decoration: none;
+
+        display: inline-flex;
+
+        align-items: center;
+
+        gap: 8px;
+
+        transition: 0.3s;
+      }
+
+      .btn-home:hover {
+        transform: translateY(-2px);
+
+        color: #111827;
+
+        box-shadow: 0 10px 24px rgba(255, 255, 255, 0.15);
+      }
+
+      /* ================= MOBILE ================= */
+
+      @media (max-width: 768px) {
+        body {
+          overflow-y: auto;
+        }
+
+        .coming-container {
+          padding: 20px;
+        }
+
+        .coming-card {
+          padding: 26px 20px;
+        }
+
+        .coming-card h1 {
+          font-size: 28px;
+        }
+
+        .feature-boxes {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- BACKGROUND -->
+
+    <div class="background"></div>
+
+    <!-- CONTENT -->
+
+    <div class="coming-container">
+      <div class="coming-card">
+        <!-- ICON -->
+
+        <div class="icon-box">
+          <i class="bi bi-box-seam"></i>
+        </div>
+
+        <!-- BADGE -->
+
+        <div class="coming-badge">Module Under Development</div>
+
+        <!-- TITLE -->
+
+        <h1>
+          Products Section<br />
+          Coming Soon 🚀
+        </h1>
+
+        <!-- DESCRIPTION -->
+
+        <p>
+          We’re building a powerful and modern product management system for
+          your MLM platform. Soon you'll be able to manage products, orders,
+          sales, and inventory from one dashboard.
+        </p>
+
+        <!-- FEATURES -->
+
+        <div class="feature-boxes">
+          <div class="feature-box">
+            <i class="bi bi-plus-square-fill"></i>
+
+            <h5>Add Products</h5>
+
+            <span> Upload and manage products easily. </span>
+          </div>
+
+          <div class="feature-box">
+            <i class="bi bi-cart-check-fill"></i>
+
+            <h5>Smart Orders</h5>
+
+            <span> Manage orders and purchases smoothly. </span>
+          </div>
+
+          <div class="feature-box">
+            <i class="bi bi-bar-chart-fill"></i>
+
+            <h5>Analytics</h5>
+
+            <span> Powerful sales and performance reports. </span>
+          </div>
+        </div>
+
+        <!-- BUTTON -->
+
+        <a href="/user_dashboard" class="btn-home">
+          <i class="bi bi-arrow-left"></i>
+
+          Back To Dashboard
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta
+    content="width=device-width, initial-scale=1.0"
+    name="viewport"
+  />
+
+  <title>
+    User Profile
+  </title>
+
+  <!-- Favicon -->
+
+  <link
+    href="/assets/img/favicon.png"
+    rel="icon"
+  />
+
+  <!-- Google Fonts -->
+
+  <link
+    href="https://fonts.gstatic.com"
+    rel="preconnect"
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700"
+    rel="stylesheet"
+  />
+
+  <!-- Vendor CSS -->
+
+  <link
+    href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link
+    href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+
+  <link
+    href="/assets/vendor/boxicons/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+
+  <link
+    href="/assets/vendor/remixicon/remixicon.css"
+    rel="stylesheet"
+  />
+
+  <!-- Main CSS -->
+
+  <link
+    href="/assets/css/style.css"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    body {
+
+      background: #f4f7ff;
+
+    }
+
+    .profile-card {
+
+      border: none;
+
+      border-radius: 24px;
+
+      overflow: hidden;
+
+      box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+
+      background: white;
+
+    }
+
+    .profile-cover {
+
+      height: 120px;
+
+      background: linear-gradient(
+        135deg,
+        #012970,
+        #0d6efd
+      );
+
+    }
+
+    .profile-avatar {
+
+      width: 130px;
+
+      height: 130px;
+
+      border-radius: 50%;
+
+      object-fit: cover;
+
+      border: 5px solid white;
+
+      margin-top: -65px;
+
+      background: #f1f1f1;
+
+    }
+
+    .profile-name {
+
+      font-size: 28px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+      margin-top: 15px;
+
+    }
+
+    .profile-email {
+
+      color: #6c757d;
+
+      font-size: 14px;
+
+    }
+
+    .info-card {
+
+      border: none;
+
+      border-radius: 24px;
+
+      box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+
+    }
+
+    .nav-tabs {
+
+      border-bottom: none;
+
+      gap: 10px;
+
+    }
+
+    .nav-tabs .nav-link {
+
+      border: none;
+
+      border-radius: 12px;
+
+      padding: 12px 20px;
+
+      font-weight: 600;
+
+      color: #012970;
+
+      background: #f4f7ff;
+
+    }
+
+    .nav-tabs .nav-link.active {
+
+      background: #012970;
+
+      color: white;
+
+    }
+
+    .profile-detail {
+
+      padding: 18px 0;
+
+      border-bottom: 1px solid #eee;
+
+    }
+
+    .profile-label {
+
+      font-weight: 700;
+
+      color: #012970;
+
+    }
+
+    .form-control,
+    .form-select {
+
+      height: 50px;
+
+      border-radius: 14px;
+
+      border: 1px solid #dbe2ef;
+
+      box-shadow: none;
+
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+
+      border-color: #0d6efd;
+
+      box-shadow: none;
+
+    }
+
+    textarea.form-control {
+
+      height: auto;
+
+    }
+
+    .save-btn {
+
+      background: #012970;
+
+      border: none;
+
+      height: 50px;
+
+      border-radius: 14px;
+
+      font-weight: 700;
+
+      padding: 0 30px;
+
+    }
+
+    .save-btn:hover {
+
+      background: #0d6efd;
+
+    }
+
+    .upload-btn {
+
+      position: absolute;
+
+      bottom: 0;
+
+      right: 0;
+
+      width: 38px;
+
+      height: 38px;
+
+      border-radius: 50%;
+
+      background: #0d6efd;
+
+      color: white;
+
+      border: none;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      cursor: pointer;
+
+    }
+
+    .profile-image-wrapper {
+
+      position: relative;
+
+      display: inline-block;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <%- include("../../utils/header") %>
+
+  <!-- SIDEBAR -->
+
+  <%- include("../../utils/side") %>
+
+  <!-- MAIN -->
+
+  <main
+    id="main"
+    class="main"
+  >
+
+    <!-- PAGE TITLE -->
+
+    <div class="pagetitle mb-4">
+
+      <%- include("../../utils/flash") %>
+
+      <h1>
+        My Profile
+      </h1>
+
+      <nav>
+
+        <ol class="breadcrumb">
+
+          <li class="breadcrumb-item">
+            <a href="/user_dashboard">
+              Home
+            </a>
+          </li>
+
+          <li class="breadcrumb-item active">
+            Profile
+          </li>
+
+        </ol>
+
+      </nav>
+
+    </div>
+
+    <!-- PROFILE SECTION -->
+
+    <section class="section profile">
+
+      <div class="row">
+
+        <!-- LEFT CARD -->
+
+        <div class="col-xl-4">
+
+          <div class="card profile-card">
+
+            <div class="profile-cover"></div>
+
+            <div class="card-body text-center pb-5">
+
+              <!-- PROFILE IMAGE -->
+
+              <div class="profile-image-wrapper">
+
+                <img
+                  src="<%= admin_data.profile_photo || '/assets/img/profile-img.jpg' %>"
+                  alt="Profile"
+                  class="profile-avatar"
+                >
+
+                <label
+                  for="profilePhoto"
+                  class="upload-btn"
+                >
+                  <i class="bi bi-camera-fill"></i>
+                </label>
+
+              </div>
+
+              <h2 class="profile-name">
+                <%= admin_data.name %>
+              </h2>
+
+              <p class="profile-email">
+                <%= admin_data.email %>
+              </p>
+
+              <div class="mt-4">
+
+                <span class="badge bg-primary p-2 px-3">
+                  User ID :
+                  <%= admin_data.user_id %>
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT SECTION -->
+
+        <div class="col-xl-8">
+
+          <div class="card info-card">
+
+            <div class="card-body p-4">
+
+              <!-- TABS -->
+
+              <ul class="nav nav-tabs mb-4">
+
+                <li class="nav-item">
+
+                  <button
+                    class="nav-link active"
+                    data-bs-toggle="tab"
+                    data-bs-target="#profile-overview"
+                  >
+                    Profile Details
+                  </button>
+
+                </li>
+
+                <li class="nav-item">
+
+                  <button
+                    class="nav-link"
+                    data-bs-toggle="tab"
+                    data-bs-target="#profile-edit"
+                  >
+                    Edit Profile
+                  </button>
+
+                </li>
+
+              </ul>
+
+              <div class="tab-content">
+
+                <!-- PROFILE DETAILS -->
+
+                <div
+                  class="tab-pane fade show active"
+                  id="profile-overview"
+                >
+
+                  <div class="profile-detail row">
+
+                    <div class="col-md-4 profile-label">
+                      Full Name
+                    </div>
+
+                    <div class="col-md-8">
+                      <%= admin_data.name %>
+                    </div>
+
+                  </div>
+
+                  <div class="profile-detail row">
+
+                    <div class="col-md-4 profile-label">
+                      Email
+                    </div>
+
+                    <div class="col-md-8">
+                      <%= admin_data.email %>
+                    </div>
+
+                  </div>
+
+                  <div class="profile-detail row">
+
+                    <div class="col-md-4 profile-label">
+                      Mobile
+                    </div>
+
+                    <div class="col-md-8">
+                      <%= admin_data.mobile || 'N/A' %>
+                    </div>
+
+                  </div>
+
+                  <div class="profile-detail row">
+
+                    <div class="col-md-4 profile-label">
+                      Gender
+                    </div>
+
+                    <div class="col-md-8">
+                      <%= admin_data.gender || 'N/A' %>
+                    </div>
+
+                  </div>
+
+                  <div class="profile-detail row">
+
+                    <div class="col-md-4 profile-label">
+                      City
+                    </div>
+
+                    <div class="col-md-8">
+                      <%= admin_data.city || 'N/A' %>
+                    </div>
+
+                  </div>
+
+                  <div class="profile-detail row">
+
+                    <div class="col-md-4 profile-label">
+                      State
+                    </div>
+
+                    <div class="col-md-8">
+                      <%= admin_data.state || 'N/A' %>
+                    </div>
+
+                  </div>
+
+                  <div class="profile-detail row border-0">
+
+                    <div class="col-md-4 profile-label">
+                      Address
+                    </div>
+
+                    <div class="col-md-8">
+                      <%= admin_data.address || 'N/A' %>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <!-- EDIT PROFILE -->
+
+                <div
+                  class="tab-pane fade"
+                  id="profile-edit"
+                >
+
+                  <form
+                    action="/user_profile_update"
+                    method="POST"
+                    enctype="multipart/form-data"
+                  >
+
+                    <!-- PROFILE PHOTO -->
+
+                    <div class="mb-4">
+
+                      <label class="form-label fw-bold">
+                        Profile Photo
+                      </label>
+
+                      <input
+                        type="file"
+                        name="profile_photo"
+                        id="profilePhoto"
+                        class="form-control"
+                        accept="image/*"
+                      >
+
+                    </div>
+
+                    <!-- NAME -->
+
+                    <div class="mb-4">
+
+                      <label class="form-label fw-bold">
+                        Full Name
+                      </label>
+
+                      <input
+                        type="text"
+                        name="name"
+                        class="form-control"
+                        value="<%= admin_data.name %>"
+                      >
+
+                    </div>
+
+                    <!-- EMAIL -->
+
+                    <div class="mb-4">
+
+                      <label class="form-label fw-bold">
+                        Email Address
+                      </label>
+
+                      <input
+                        type="email"
+                        class="form-control"
+                        value="<%= admin_data.email %>"
+                        disabled
+                      >
+
+                    </div>
+
+                    <!-- MOBILE -->
+
+                    <div class="mb-4">
+
+                      <label class="form-label fw-bold">
+                        Mobile Number
+                      </label>
+
+                      <input
+                        type="text"
+                        name="mobile"
+                        class="form-control"
+                        value="<%= admin_data.mobile %>"
+                      >
+
+                    </div>
+
+                    <!-- GENDER -->
+
+                    <div class="mb-4">
+
+                      <label class="form-label fw-bold">
+                        Gender
+                      </label>
+
+                      <select
+                        name="gender"
+                        class="form-select"
+                      >
+
+                        <option value="">
+                          Select Gender
+                        </option>
+
+                        <option
+                          value="Male"
+                          <%= admin_data.gender == 'Male' ? 'selected' : '' %>
+                        >
+                          Male
+                        </option>
+
+                        <option
+                          value="Female"
+                          <%= admin_data.gender == 'Female' ? 'selected' : '' %>
+                        >
+                          Female
+                        </option>
+
+                      </select>
+
+                    </div>
+
+                    <!-- CITY -->
+
+                    <div class="mb-4">
+
+                      <label class="form-label fw-bold">
+                        City
+                      </label>
+
+                      <input
+                        type="text"
+                        name="city"
+                        class="form-control"
+                        value="<%= admin_data.city %>"
+                      >
+
+                    </div>
+
+                    <!-- STATE -->
+
+                    <div class="mb-4">
+
+                      <label class="form-label fw-bold">
+                        State
+                      </label>
+
+                      <input
+                        type="text"
+                        name="state"
+                        class="form-control"
+                        value="<%= admin_data.state %>"
+                      >
+
+                    </div>
+
+                    <!-- ADDRESS -->
+
+                    <div class="mb-4">
+
+                      <label class="form-label fw-bold">
+                        Address
+                      </label>
+
+                      <textarea
+                        name="address"
+                        class="form-control"
+                        rows="4"
+                      ><%= admin_data.address %></textarea>
+
+                    </div>
+
+                    <!-- SUBMIT -->
+
+                    <div class="text-end">
+
+                      <button
+                        type="submit"
+                        class="btn btn-primary save-btn"
+                      >
+                        Save Changes
+                      </button>
+
+                    </div>
+
+                  </form>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <%- include("../../utils/footer") %>
+
+  <!-- BACK TO TOP -->
+
+  <a
+    href="#"
+    class="back-to-top d-flex align-items-center justify-content-center"
+  >
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- JS -->
+
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>

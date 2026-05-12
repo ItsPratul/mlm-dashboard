@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Withdraw Balance</title>
+
+    <!-- Favicons -->
+
+    <link href="/assets/img/favicon.png" rel="icon" />
+
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS -->
+
+    <link
+      href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="/assets/vendor/boxicons/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+
+    <!-- Main CSS -->
+
+    <link href="/assets/css/style.css" rel="stylesheet" />
+
+    <style>
+      body {
+        background: #f4f7ff;
+      }
+
+      .page-title {
+        font-size: 30px;
+
+        font-weight: 700;
+
+        color: #012970;
+      }
+
+      .wallet-card {
+        border: none;
+
+        border-radius: 28px;
+
+        overflow: hidden;
+
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+
+        background: white;
+      }
+
+      .wallet-header {
+        background: linear-gradient(135deg, #dc3545, #ff6b6b);
+
+        padding: 40px;
+
+        color: white;
+
+        position: relative;
+      }
+
+      .wallet-header h2 {
+        font-size: 34px;
+
+        font-weight: 700;
+
+        margin-bottom: 10px;
+      }
+
+      .wallet-header p {
+        font-size: 15px;
+
+        opacity: 0.9;
+
+        margin: 0;
+      }
+
+      .wallet-icon {
+        position: absolute;
+
+        right: 35px;
+
+        top: 25px;
+
+        font-size: 75px;
+
+        opacity: 0.12;
+      }
+
+      .wallet-body {
+        padding: 45px;
+      }
+
+      .wallet-balance-box {
+        background: linear-gradient(135deg, #fff5f5, #ffe2e2);
+
+        border-radius: 24px;
+
+        padding: 30px;
+
+        text-align: center;
+
+        margin-bottom: 40px;
+      }
+
+      .wallet-balance-box h6 {
+        font-size: 15px;
+
+        color: #dc3545;
+
+        margin-bottom: 10px;
+
+        font-weight: 700;
+      }
+
+      .wallet-balance {
+        font-size: 42px;
+
+        font-weight: 800;
+
+        color: #dc3545;
+      }
+
+      .form-label {
+        font-weight: 700;
+
+        color: #012970;
+
+        margin-bottom: 12px;
+      }
+
+      .input-group {
+        border-radius: 18px;
+
+        overflow: hidden;
+
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+      }
+
+      .input-group-text {
+        background: #dc3545;
+
+        color: white;
+
+        border: none;
+
+        padding: 0 22px;
+
+        font-size: 22px;
+
+        font-weight: 700;
+      }
+
+      .form-control {
+        height: 60px;
+
+        border: none;
+
+        font-size: 18px;
+
+        font-weight: 600;
+
+        padding-left: 18px;
+
+        box-shadow: none;
+      }
+
+      .form-control:focus {
+        box-shadow: none;
+      }
+
+      .submit-btn {
+        height: 58px;
+
+        border: none;
+
+        border-radius: 18px;
+
+        background: linear-gradient(135deg, #dc3545, #ff6b6b);
+
+        color: white;
+
+        font-size: 17px;
+
+        font-weight: 700;
+
+        padding: 0 40px;
+
+        transition: 0.3s;
+      }
+
+      .submit-btn:hover {
+        transform: translateY(-2px);
+
+        box-shadow: 0 10px 20px rgba(220, 53, 69, 0.2);
+      }
+
+      .reset-btn {
+        height: 58px;
+
+        border-radius: 18px;
+
+        font-size: 17px;
+
+        font-weight: 700;
+
+        padding: 0 40px;
+      }
+
+      .quick-amounts {
+        margin-top: 25px;
+
+        display: flex;
+
+        gap: 12px;
+
+        flex-wrap: wrap;
+      }
+
+      .quick-btn {
+        border: none;
+
+        background: #fff1f1;
+
+        color: #dc3545;
+
+        padding: 12px 20px;
+
+        border-radius: 14px;
+
+        font-weight: 700;
+
+        transition: 0.3s;
+      }
+
+      .quick-btn:hover {
+        background: #dc3545;
+
+        color: white;
+      }
+
+      .warning-box {
+        margin-top: 30px;
+
+        background: #fff8e1;
+
+        border-left: 5px solid #ffc107;
+
+        padding: 18px 20px;
+
+        border-radius: 14px;
+
+        font-size: 14px;
+
+        color: #856404;
+
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+
+    <%- include("../../utils/header") %>
+
+    <!-- SIDEBAR -->
+
+    <%- include("../../utils/side") %>
+
+    <!-- MAIN -->
+
+    <main id="main" class="main">
+      <!-- PAGE TITLE -->
+
+      <div class="pagetitle mb-4">
+        <%- include("../../utils/flash") %>
+
+        <h1 class="page-title">Withdraw Balance</h1>
+
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/user_dashboard"> Home </a>
+            </li>
+
+            <li class="breadcrumb-item">Wallet Manager</li>
+
+            <li class="breadcrumb-item active">Withdraw Balance</li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- WALLET SECTION -->
+
+      <section class="section">
+        <div class="card wallet-card">
+          <!-- HEADER -->
+
+          <div class="wallet-header">
+            <i class="bi bi-cash-stack wallet-icon"></i>
+
+            <h2>Withdraw Money</h2>
+
+            <p>Securely withdraw balance from your wallet anytime.</p>
+          </div>
+
+          <!-- BODY -->
+
+          <div class="wallet-body">
+            <!-- BALANCE -->
+
+            <div class="wallet-balance-box">
+              <h6>AVAILABLE WALLET BALANCE</h6>
+
+              <div class="wallet-balance">₹ <%= admin_data.wallet || 0 %></div>
+            </div>
+
+            <!-- FORM -->
+
+            <form class="row g-4" action="/withdraw_balance_post" method="POST">
+              <!-- AMOUNT -->
+
+              <div class="col-md-12">
+                <label class="form-label"> Enter Withdrawal Amount </label>
+
+                <div class="input-group">
+                  <span class="input-group-text"> ₹ </span>
+
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="amount"
+                    name="amount"
+                    placeholder="Enter amount"
+                    required
+                  />
+                </div>
+
+                <!-- QUICK BUTTONS -->
+
+                <div class="quick-amounts">
+                  <button
+                    type="button"
+                    class="quick-btn"
+                    onclick="setAmount(500)"
+                  >
+                    ₹500
+                  </button>
+
+                  <button
+                    type="button"
+                    class="quick-btn"
+                    onclick="setAmount(1000)"
+                  >
+                    ₹1000
+                  </button>
+
+                  <button
+                    type="button"
+                    class="quick-btn"
+                    onclick="setAmount(2000)"
+                  >
+                    ₹2000
+                  </button>
+
+                  <button
+                    type="button"
+                    class="quick-btn"
+                    onclick="setAmount(5000)"
+                  >
+                    ₹5000
+                  </button>
+
+                  <button
+                    type="button"
+                    class="quick-btn"
+                    onclick="setAmount(10000)"
+                  >
+                    ₹10000
+                  </button>
+                </div>
+              </div>
+
+              <!-- WARNING -->
+
+              <div class="col-12">
+                <div class="warning-box">
+                  <i class="bi bi-exclamation-triangle-fill me-2"></i>
+
+                  Please double-check the amount before withdrawing. Withdrawn
+                  balance cannot be automatically reversed.
+                </div>
+              </div>
+
+              <!-- BUTTONS -->
+
+              <div class="col-12 mt-4 text-center">
+                <button type="submit" class="submit-btn">
+                  <i class="bi bi-dash-circle-fill me-2"></i>
+
+                  Withdraw Balance
+                </button>
+
+                <button type="reset" class="btn btn-secondary reset-btn ms-3">
+                  Reset
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+
+    <%- include("../../utils/footer") %>
+
+    <!-- BACK TO TOP -->
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+    >
+      <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <!-- JS -->
+
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/js/main.js"></script>
+
+    <script>
+      function setAmount(amount) {
+        document.getElementById("amount").value = amount;
+      }
+    </script>
+  </body>
+</html>

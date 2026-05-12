@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <title>Transaction Manager</title>
+
+  <!-- Favicons -->
+  <link href="/assets/img/favicon.png" rel="icon" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect" />
+
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700|Nunito:300,400,600,700|Poppins:300,400,500,600,700"
+    rel="stylesheet"
+  />
+
+  <!-- Vendor CSS -->
+
+  <link
+    href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <link
+    href="/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+    rel="stylesheet"
+  />
+
+  <link
+    href="/assets/vendor/boxicons/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+
+  <link
+    href="/assets/vendor/remixicon/remixicon.css"
+    rel="stylesheet"
+  />
+
+  <link
+    href="/assets/vendor/simple-datatables/style.css"
+    rel="stylesheet"
+  />
+
+  <!-- Main CSS -->
+
+  <link
+    href="/assets/css/style.css"
+    rel="stylesheet"
+  />
+
+  <style>
+
+    body {
+
+      background: #f6f9ff;
+
+    }
+
+    .page-title {
+
+      font-size: 30px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+    }
+
+    .search-card,
+    .table-card {
+
+      border: none;
+
+      border-radius: 16px;
+
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+
+    }
+
+    .table thead {
+
+      background: #012970;
+
+      color: white;
+
+    }
+
+    .table thead th {
+
+      font-size: 14px;
+
+      font-weight: 600;
+
+      padding: 16px;
+
+      white-space: nowrap;
+
+    }
+
+    .table tbody td {
+
+      vertical-align: middle;
+
+      padding: 18px 16px;
+
+      font-size: 15px;
+
+      white-space: nowrap;
+
+    }
+
+    .badge-credit {
+
+      background: #198754;
+
+      color: white;
+
+      padding: 7px 16px;
+
+      border-radius: 30px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      display: inline-block;
+
+    }
+
+    .badge-debit {
+
+      background: #dc3545;
+
+      color: white;
+
+      padding: 7px 16px;
+
+      border-radius: 30px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      display: inline-block;
+
+    }
+
+    .amount-credit {
+
+      font-weight: 700;
+
+      color: #198754;
+
+      font-size: 16px;
+
+    }
+
+    .amount-debit {
+
+      font-weight: 700;
+
+      color: #dc3545;
+
+      font-size: 16px;
+
+    }
+
+    .card-title {
+
+      font-size: 22px;
+
+      font-weight: 700;
+
+      color: #012970;
+
+    }
+
+    .search-btn {
+
+      height: 45px;
+
+      font-weight: 600;
+
+    }
+
+    .empty-box {
+
+      text-align: center;
+
+      padding: 60px 20px;
+
+      color: #777;
+
+    }
+
+    .empty-box i {
+
+      font-size: 60px;
+
+      margin-bottom: 15px;
+
+      color: #ccc;
+
+    }
+
+    .remark-badge {
+
+      background: #eef3ff;
+
+      color: #012970;
+
+      padding: 8px 16px;
+
+      border-radius: 30px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+
+      display: inline-block;
+
+      white-space: nowrap;
+
+      min-width: max-content;
+
+    }
+
+    .table-responsive {
+
+      overflow-x: auto;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <%- include("../../utils/header") %>
+
+  <!-- SIDEBAR -->
+
+  <%- include("../../utils/side") %>
+
+  <!-- MAIN -->
+
+  <main id="main" class="main">
+
+    <!-- PAGE TITLE -->
+
+    <div class="pagetitle mb-4">
+
+      <h1 class="page-title">
+        Transaction Manager
+      </h1>
+
+      <nav>
+
+        <ol class="breadcrumb">
+
+          <li class="breadcrumb-item">
+            <a href="/user_dashboard">
+              Home
+            </a>
+          </li>
+
+          <li class="breadcrumb-item active">
+            Transactions
+          </li>
+
+        </ol>
+
+      </nav>
+
+    </div>
+
+    <!-- SEARCH SECTION -->
+
+    <div class="card search-card mb-4">
+
+      <div class="card-body p-4">
+
+        <h5 class="card-title mb-4">
+          Search Transactions
+        </h5>
+
+        <form
+          class="row g-3"
+          action="/transaction_manager"
+          method="GET"
+        >
+
+          <!-- USER NAME -->
+
+          <div class="col-md-3">
+
+            <label class="form-label">
+              User Name
+            </label>
+
+            <input
+              type="text"
+              class="form-control"
+              name="filtername"
+              placeholder="Search user name"
+              value="<%= filtername || '' %>"
+            >
+
+          </div>
+
+          <!-- FROM USER ID -->
+
+          <div class="col-md-2">
+
+            <label class="form-label">
+              From User ID
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="filterfromuserid"
+              placeholder="From ID"
+              value="<%= filterfromuserid || '' %>"
+            >
+
+          </div>
+
+          <!-- TO USER ID -->
+
+          <div class="col-md-2">
+
+            <label class="form-label">
+              To User ID
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="filtertouserid"
+              placeholder="To ID"
+              value="<%= filtertouserid || '' %>"
+            >
+
+          </div>
+
+          <!-- AMOUNT -->
+
+          <div class="col-md-2">
+
+            <label class="form-label">
+              Amount
+            </label>
+
+            <input
+              type="number"
+              class="form-control"
+              name="filteramount"
+              placeholder="Amount"
+              value="<%= filteramount || '' %>"
+            >
+
+          </div>
+
+          <!-- TYPE -->
+
+          <div class="col-md-2">
+
+            <label class="form-label">
+              Type
+            </label>
+
+            <select
+              class="form-select"
+              name="filtertype"
+            >
+
+              <option value="">
+                All
+              </option>
+
+              <option
+                value="credit"
+                <%= filtertype == "credit" ? "selected" : "" %>
+              >
+                Credit
+              </option>
+
+              <option
+                value="debit"
+                <%= filtertype == "debit" ? "selected" : "" %>
+              >
+                Debit
+              </option>
+
+            </select>
+
+          </div>
+
+          <!-- SEARCH BUTTON -->
+
+          <div class="col-md-1 d-flex align-items-end">
+
+            <button
+              type="submit"
+              class="btn btn-primary w-100 search-btn"
+            >
+              Search
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <!-- TRANSACTION TABLE -->
+
+    <section class="section">
+
+      <div class="card table-card">
+
+        <div class="card-body p-4">
+
+          <h5 class="card-title mb-4">
+            Transaction History
+          </h5>
+
+          <% if(transaction_data.length > 0){ %>
+
+            <div class="table-responsive">
+
+              <table class="table table-hover align-middle datatable">
+
+                <thead>
+
+                  <tr>
+
+                    <th>#</th>
+
+                    <th>From User</th>
+
+                    <th>From ID</th>
+
+                    <th>To User</th>
+
+                    <th>To ID</th>
+
+                    <th>Type</th>
+
+                    <th>Amount</th>
+
+                    <th>Old Balance</th>
+
+                    <th>Updated Balance</th>
+
+                    <th style="min-width: 240px;">
+                      Remark
+                    </th>
+
+                    <th>Date</th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                  <% let i = 1; %>
+
+                  <% transaction_data.forEach(function(dataobj){ %>
+
+                    <tr>
+
+                      <!-- SERIAL -->
+
+                      <td>
+                        <%= i++ %>
+                      </td>
+
+                      <!-- FROM USER -->
+
+                      <td>
+
+                        <strong>
+                          <%= dataobj.fromUserName || "N/A" %>
+                        </strong>
+
+                      </td>
+
+                      <!-- FROM ID -->
+
+                      <td>
+                        <%= dataobj.fromUserId %>
+                      </td>
+
+                      <!-- TO USER -->
+
+                      <td>
+
+                        <strong>
+                          <%= dataobj.toUserName || "N/A" %>
+                        </strong>
+
+                      </td>
+
+                      <!-- TO ID -->
+
+                      <td>
+                        <%= dataobj.toUserId %>
+                      </td>
+
+                      <!-- TYPE -->
+
+                      <td>
+
+                        <% if(dataobj.type === "credit"){ %>
+
+                          <span class="badge-credit">
+                            CREDIT
+                          </span>
+
+                        <% } else { %>
+
+                          <span class="badge-debit">
+                            DEBIT
+                          </span>
+
+                        <% } %>
+
+                      </td>
+
+                      <!-- AMOUNT -->
+
+                      <td
+                        class="<%= dataobj.type === 'credit' ? 'amount-credit' : 'amount-debit' %>"
+                      >
+
+                        <% if(dataobj.type === "credit"){ %>
+
+                          + ₹ <%= dataobj.amount %>
+
+                        <% } else { %>
+
+                          - ₹ <%= dataobj.amount %>
+
+                        <% } %>
+
+                      </td>
+
+                      <!-- OLD BALANCE -->
+
+                      <td>
+                        ₹ <%= dataobj.oldBalance %>
+                      </td>
+
+                      <!-- UPDATED BALANCE -->
+
+                      <td>
+                        ₹ <%= dataobj.updatedBalance %>
+                      </td>
+
+                      <!-- REMARK -->
+
+                      <td>
+
+                        <% if(dataobj.remark){ %>
+
+                          <span class="remark-badge">
+                            <%= dataobj.remark %>
+                          </span>
+
+                        <% } else { %>
+
+                          <span class="text-muted">
+                            N/A
+                          </span>
+
+                        <% } %>
+
+                      </td>
+
+                      <!-- DATE -->
+
+                      <td>
+
+                        <%= new Date(
+                          dataobj.createdAt
+                        ).toLocaleString("en-IN") %>
+
+                      </td>
+
+                    </tr>
+
+                  <% }) %>
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+          <% } else { %>
+
+            <!-- EMPTY DATA -->
+
+            <div class="empty-box">
+
+              <i class="bi bi-database-x"></i>
+
+              <h4>
+                No Transactions Found
+              </h4>
+
+              <p>
+                No records matched your search.
+              </p>
+
+            </div>
+
+          <% } %>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <%- include("../../utils/footer") %>
+
+  <!-- BACK TO TOP -->
+
+  <a
+    href="#"
+    class="back-to-top d-flex align-items-center justify-content-center"
+  >
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+
+  <!-- Vendor JS -->
+
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+
+  <!-- Main JS -->
+
+  <script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>

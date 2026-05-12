@@ -1,0 +1,554 @@
+<!-- ======= HEADER ======= -->
+
+<header
+  id="header"
+  class="header fixed-top d-flex align-items-center justify-content-between"
+>
+  <!-- LEFT -->
+
+  <div class="header-left d-flex align-items-center">
+    <!-- LOGO -->
+
+    <a href="/user_dashboard" class="logo d-flex align-items-center">
+      <div class="logo-icon">
+        <i class="bi bi-grid-fill"></i>
+      </div>
+
+      <div class="logo-text">
+        <h5>MLM Panel</h5>
+
+        <span> Admin Dashboard </span>
+      </div>
+    </a>
+
+    <!-- SIDEBAR TOGGLE -->
+
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+  </div>
+
+  <!-- CENTER -->
+
+  <div class="header-center d-none d-lg-flex">
+    <div class="wallet-pill">
+      <i class="bi bi-wallet2"></i>
+
+      <span> ₹ <%= admin_data.wallet || 0 %> </span>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+
+  <nav class="header-nav">
+    <ul class="d-flex align-items-center mb-0">
+      <!-- SEARCH -->
+
+      <li class="nav-item d-none d-md-block">
+        <form class="search-box">
+          <i class="bi bi-search"></i>
+
+          <input type="text" placeholder="Search here..." />
+        </form>
+      </li>
+
+      <!-- NOTIFICATION -->
+
+      <li class="nav-item dropdown">
+        <a class="nav-icon" href="#" data-bs-toggle="dropdown">
+          <i class="bi bi-bell"></i>
+
+          <span class="nav-badge"> 4 </span>
+        </a>
+
+        <ul
+          class="dropdown-menu dropdown-menu-end shadow border-0 notification-dropdown"
+        >
+          <li class="dropdown-header">Notifications</li>
+
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+
+          <li class="dropdown-item-custom">
+            <div class="notify-icon bg-warning">
+              <i class="bi bi-exclamation-circle"></i>
+            </div>
+
+            <div>
+              <h6>Wallet Alert</h6>
+
+              <p>New transaction received</p>
+            </div>
+          </li>
+
+          <li class="dropdown-item-custom">
+            <div class="notify-icon bg-success">
+              <i class="bi bi-check-circle"></i>
+            </div>
+
+            <div>
+              <h6>Account Active</h6>
+
+              <p>Everything working perfectly</p>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <!-- PROFILE -->
+
+      <li class="nav-item dropdown profile-dropdown">
+        <a
+          class="profile-btn d-flex align-items-center"
+          href="#"
+          data-bs-toggle="dropdown"
+        >
+          <img
+            src="<%= admin_data.profile_photo || '/assets/img/profile-img.jpg' %>"
+            alt="Profile"
+            class="profile-image"
+          />
+
+          <div class="profile-info d-none d-md-block">
+            <h6><%= admin_data.name %></h6>
+
+            <span> Super Admin </span>
+          </div>
+
+          <i class="bi bi-chevron-down"></i>
+        </a>
+
+        <!-- DROPDOWN -->
+
+        <ul
+          class="dropdown-menu dropdown-menu-end shadow border-0 profile-menu"
+        >
+          <li class="profile-header">
+            <img
+              src="<%= admin_data.profile_photo || '/assets/img/profile-img.jpg' %>"
+              alt="Profile"
+            />
+
+            <h5><%= admin_data.name %></h5>
+
+            <span> User ID : #<%= admin_data.user_id %> </span>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="/admin_profile">
+              <i class="bi bi-person"></i>
+
+              My Profile
+            </a>
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-gear"></i>
+
+              Settings
+            </a>
+          </li>
+
+          <li>
+            <a class="dropdown-item" href="#">
+              <i class="bi bi-question-circle"></i>
+
+              Help & Support
+            </a>
+          </li>
+
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+
+          <li>
+            <form action="/user_logout" method="POST">
+              <button type="submit" class="logout-btn">
+                <i class="bi bi-box-arrow-right"></i>
+
+                Logout
+              </button>
+            </form>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ======= HEADER CSS ======= -->
+
+<style>
+  .header {
+    height: 72px;
+
+    background: white;
+
+    padding: 0 24px;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+
+    border-bottom: 1px solid #edf1f7;
+
+    z-index: 999;
+  }
+
+  /* ================= LOGO ================= */
+
+  .logo {
+    text-decoration: none;
+
+    gap: 14px;
+  }
+
+  .logo-icon {
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 14px;
+
+    background: linear-gradient(135deg, #012970, #0d6efd);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    font-size: 20px;
+
+    box-shadow: 0 6px 18px rgba(13, 110, 253, 0.2);
+  }
+
+  .logo-text h5 {
+    margin: 0;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #012970;
+  }
+
+  .logo-text span {
+    font-size: 12px;
+
+    color: #6c757d;
+  }
+
+  .toggle-sidebar-btn {
+    font-size: 24px;
+
+    margin-left: 24px;
+
+    cursor: pointer;
+
+    color: #012970;
+  }
+
+  /* ================= WALLET ================= */
+
+  .wallet-pill {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background: #eef7ff;
+
+    padding: 10px 18px;
+
+    border-radius: 16px;
+
+    font-weight: 700;
+
+    color: #012970;
+  }
+
+  .wallet-pill i {
+    color: #0d6efd;
+
+    font-size: 18px;
+  }
+
+  /* ================= SEARCH ================= */
+
+  .search-box {
+    position: relative;
+
+    margin-right: 20px;
+  }
+
+  .search-box i {
+    position: absolute;
+
+    left: 16px;
+
+    top: 12px;
+
+    color: #6c757d;
+  }
+
+  .search-box input {
+    width: 240px;
+
+    height: 42px;
+
+    border-radius: 14px;
+
+    border: 1px solid #e4e9f2;
+
+    padding-left: 42px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.3s;
+  }
+
+  .search-box input:focus {
+    border-color: #0d6efd;
+  }
+
+  /* ================= NAV ICON ================= */
+
+  .nav-icon {
+    width: 44px;
+
+    height: 44px;
+
+    border-radius: 14px;
+
+    background: #f4f7ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    color: #012970;
+
+    font-size: 20px;
+
+    margin-right: 14px;
+
+    text-decoration: none;
+  }
+
+  .nav-badge {
+    position: absolute;
+
+    top: -5px;
+
+    right: -3px;
+
+    background: #dc3545;
+
+    color: white;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    width: 18px;
+
+    height: 18px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+  }
+
+  /* ================= PROFILE ================= */
+
+  .profile-btn {
+    background: #f4f7ff;
+
+    border-radius: 16px;
+
+    padding: 8px 14px;
+
+    gap: 12px;
+
+    text-decoration: none;
+
+    color: #012970;
+  }
+
+  .profile-image {
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+  }
+
+  .profile-info h6 {
+    margin: 0;
+
+    font-size: 14px;
+
+    font-weight: 700;
+  }
+
+  .profile-info span {
+    font-size: 12px;
+
+    color: #6c757d;
+  }
+
+  /* ================= DROPDOWN ================= */
+
+  .profile-menu,
+  .notification-dropdown {
+    border-radius: 18px;
+
+    padding: 12px;
+
+    min-width: 280px;
+  }
+
+  .profile-header {
+    text-align: center;
+
+    padding: 15px;
+  }
+
+  .profile-header img {
+    width: 72px;
+
+    height: 72px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    margin-bottom: 10px;
+  }
+
+  .profile-header h5 {
+    margin-bottom: 4px;
+
+    font-weight: 700;
+
+    color: #012970;
+  }
+
+  .profile-header span {
+    font-size: 13px;
+
+    color: #6c757d;
+  }
+
+  .dropdown-item {
+    border-radius: 12px;
+
+    padding: 12px 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-weight: 500;
+  }
+
+  .dropdown-item:hover {
+    background: #f4f7ff;
+  }
+
+  .logout-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #fff1f1;
+
+    color: #dc3545;
+
+    height: 46px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+  }
+
+  /* ================= NOTIFICATION ================= */
+
+  .dropdown-item-custom {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 12px;
+
+    border-radius: 14px;
+  }
+
+  .dropdown-item-custom:hover {
+    background: #f8faff;
+  }
+
+  .notify-icon {
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+  }
+
+  .dropdown-item-custom h6 {
+    margin: 0;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #012970;
+  }
+
+  .dropdown-item-custom p {
+    margin: 0;
+
+    font-size: 12px;
+
+    color: #6c757d;
+  }
+
+  .bg-warning {
+    background: #ffb347;
+  }
+
+  .bg-success {
+    background: #20c997;
+  }
+</style>
